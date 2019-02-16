@@ -11,6 +11,7 @@ buildscript {
 plugins {
     `java-gradle-plugin`
     `maven-publish`
+    `kotlin-dsl`
     id("com.jfrog.artifactory") version "4.9.0"
     kotlin("jvm") version "1.3.11"
     id("io.spring.dependency-management") version "1.0.6.RELEASE"
