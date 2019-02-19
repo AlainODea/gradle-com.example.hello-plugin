@@ -71,21 +71,13 @@ tasks {
     }
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            from(components["java"])
-        }
-    }
-}
-
 artifactory {
     publish(delegateClosureOf<PublisherConfig> {
         repository(delegateClosureOf<GroovyObject> {
             setProperty("repoKey", "libs-release-local-maven")
         })
         defaults(delegateClosureOf<GroovyObject> {
-            invokeMethod("publications", "mavenJava")
+            invokeMethod("publications", publishing.publications.names.toTypedArray())
         })
     })
 }
